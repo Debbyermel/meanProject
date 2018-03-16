@@ -1,0 +1,37 @@
+
+<nav class="navbar navbar-expand-lg navbar-inverse">
+    <nav class="navbar "></nav>
+    <a class="navbar-brand" href="#">HackerGram</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item active" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+
+        <li class="nav-item active" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link" routerLink="/user">News</a>
+        </li>
+
+        <li class="nav-item active"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link" routerLink="/register"></a>
+        </li>
+
+
+        <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a routerLink="/register" class="btn btn-primary">Register</a>
+        </li>
+        <li>
+           <a routerLink="/login" class="btn btn-dark">Login</a>
+        </li>
+        </ul>
+           
+      </ul>
+  
+    </div>
+  </nav>
