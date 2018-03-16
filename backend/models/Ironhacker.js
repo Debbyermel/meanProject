@@ -6,10 +6,7 @@ const ironhackerSchema = new Schema(
     {
         firstName:String,
         lastName: String,
-        username: String,
-        password:String,
-        email: String,
-        avatar: { type: String, default: "" },
+        avatar: { type: String, default: "http://www.petwave.com/-/media/Images/Center/Breed/Dogs/Toy-Group/Brussels-Griffon/Brussels-Griffon.ashx?w=450&hash=D41C87B628F9C64059A16E8BECCF966F6E82638E" },
         following: [],
         followers: [],
         posts: [],

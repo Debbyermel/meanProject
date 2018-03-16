@@ -19,15 +19,16 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) {
     this.createForm(); // Create Angular Form when component loads
-
-  }
-  // Function to create registration form
+   }
 
   change() {
-
-this.show = !this.show;
+   this.show = !this.show;
   }
 
+  toogleLogin() {
+
+  }
+   // Function to create registration form
   createForm() {
     this.form = this.formBuilder.group({
       // Email Input

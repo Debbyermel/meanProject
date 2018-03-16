@@ -17,8 +17,15 @@ router.post('/login', passport.authenticate('local'), (req, res)=>{
 
 
 /* GET users listing. */
+//sustituir esta por un User.find
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
+});
+
+router.patch('/:id', (req,res)=>{
+  User.findOneAndUpdate(req.params.id, req.body, {new:true})
+  .then(user=>res.json(user))
+  .catch(e=>res.send(e));
 });
 
 module.exports = router;

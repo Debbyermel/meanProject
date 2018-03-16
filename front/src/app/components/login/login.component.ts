@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   onLoginSubmit(e) {
     e.preventDefault();
     this.usersService.login(this.user)
-    .subscribe(res => {
+    .subscribe(user => {
       this.router.navigate(['/dashboard']);
     });
   }

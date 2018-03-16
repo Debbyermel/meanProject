@@ -39,13 +39,23 @@ export class UsersService {
     return this.http.post('http://localhost:3000/api/users/login', user, { withCredentials: true })
     .map(res => res.json())
     .map(userL => {
-      localStorage.setItem('user', JSON.stringify(user));
-      return user;
+      localStorage.setItem('user', JSON.stringify(userL));
+      return userL;
     })
     .catch(e => {
       console.log(e);
       return Observable.throw(e);
   });
+  }
+
+  updateUser(updatedUser){
+    return this.http.patch('http://localhost:3000/api/users/' + updatedUser._id, updatedUser)
+    .map((res: Response) => res.json())
+    .map(user => user)
+    .catch(e => {
+      console.log(e);
+      return Observable.throw(e);
+    });
   }
 
 }

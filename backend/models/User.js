@@ -5,12 +5,20 @@ const PassportLocalMongoose = require('passport-local-mongoose');
 const userSchema = new Schema(
     {
         username: String,
+        name:String,
         email: String,
         role:{
             type:String,
             enum:["GUEST", "ADMIN", "IRONHACKER"],
             default:"GUEST"
-        }
+        },
+        firstName:String,
+        lastName: String,
+        avatar: { type: String, default: "http://www.petwave.com/-/media/Images/Center/Breed/Dogs/Toy-Group/Brussels-Griffon/Brussels-Griffon.ashx?w=450&hash=D41C87B628F9C64059A16E8BECCF966F6E82638E" },
+        following: [],
+        followers: [],
+        posts: [],
+        projects:[]
         },
     {
         timestamps:{
