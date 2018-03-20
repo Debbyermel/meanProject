@@ -6,7 +6,7 @@ const passport = require("passport");
 const multer = require("multer");
 const uploads = multer({dest: 'public/uploads'});
 
-/* GET users listing. */
+/* GET users list */
 router.get('/', function(req, res, next) {
   User.find()
   .then(users=>res.send(users))
@@ -14,6 +14,14 @@ router.get('/', function(req, res, next) {
 });
 
 
+/* GET Single list */
+router.get('/:id', function(req, res, next) {
+  User.findById(req.params.id)
+      .then(singleUser => res.json(singleUser))
+})
+
+
+/* Update User with Picture */
 router.patch('/update/:id', uploads.single('profilePic'), (req,res)=>{
   if(req.file){
     console.log("nunca sucedo!");
@@ -27,6 +35,16 @@ router.patch('/update/:id', uploads.single('profilePic'), (req,res)=>{
   .catch(e=>res.send(e));
 });
 
+
+/* Update User */
+router.patch('/:id', (req,res)=>{
+  User.findOneAndUpdate(req.params.id, req.body, {new:true})
+  .then(user=>res.json(user))
+  .catch(e=>res.send(e));
+});
+
+
+/* SignUp Router */
 router.post('/signup', (req,res,next)=>{
   console.log(req.body)
   User.register(req.body, req.body.password, (err, account)=>{
@@ -35,23 +53,25 @@ router.post('/signup', (req,res,next)=>{
   });
 });
 
+/* Login Router */
 router.post('/login', passport.authenticate('local'), (req, res)=>{
   return res.json(req.user);
 });
 
 
+/* Logout Router */
 router.post('/logout', (req, res)=>{
    req.logout();
    res.status(200).json({msg: "success"})
 });
 
 
-
-
-router.patch('/:id', (req,res)=>{
-  User.findOneAndUpdate(req.params.id, req.body, {new:true})
-  .then(user=>res.json(user))
-  .catch(e=>res.send(e));
+/* Delete User Router */
+ router.delete('/:id', (req,res,next)=>{
+  User.findByIdAndRemove(req.params.id)
+  .then(items=>res.status(200).json(items))
+  .catch(e=>res.status(500).send(e));
 });
+
 
 module.exports = router;

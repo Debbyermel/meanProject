@@ -31,12 +31,12 @@
                 <textarea [(ngModel)]="user.bio" class="form-control" placeholder="Tell us a little bit about yourself"></textarea>
                 <br/>
                 <label>Available for hire</label>
-                <input type="checkbox" name="hire" value="" checked>
+                <input [(ngModel)]="user.hire"  type="checkbox" name="hire" value="true" checked>
                 <br>
            
                 <a (click)="updateUser()" class="btn btn-success">Update Details</a>
             
-                <a href="#" class="btn btn-danger">Delete Account</a>
+                <a (click)="deleteUser()"  class="btn btn-danger">Delete Account</a>
                 <br /><br/>
             </div>
 

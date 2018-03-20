@@ -1,3 +1,36 @@
-<p>
-  user-detail works!
-</p>
+
+    <div class="toggleUser left" *ngIf="singleUser">
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </div>
+    <div class="profile">
+      <div class="slanted"></div>
+      <div class="bubble" height:150px width:150px>
+        <img src="{{singleUser.avatar}}" />
+
+      </div>
+  
+      <div class="name">
+        <!--check it --><h1>{{singleUser.firstName}} {{singleUser.lastName}}</h1>
+        <p class="job">{{singleUser.location}}</p>
+        <p class="job">{{singleUser.bootcamp}}</p>
+      </div>
+      <div class="links">
+        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+        <i class="fa fa-dribbble" aria-hidden="true"></i>
+        <i class="fa fa-codepen" aria-hidden="true"></i>
+      </div>
+      <div class="stats">
+        <div class="row">Followers</div>
+        <div class="row">Following</div>
+        <div class="row">Posts</div>
+  
+        
+        <div class="row count">2</div>
+        <div class="row count">18</div>
+        <div class="row count">1</div>
+      </div>
+    </div>
+    <div class="toggleUser right">
+      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+    </div>
+  

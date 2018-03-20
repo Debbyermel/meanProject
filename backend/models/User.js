@@ -23,6 +23,7 @@ const userSchema = new Schema(
         bootcamp:String,
         bio:[],
         linkdinID: String,
+        hire: Boolean 
         },
     {
         timestamps:{

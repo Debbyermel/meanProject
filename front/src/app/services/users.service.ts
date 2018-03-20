@@ -9,11 +9,12 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class UsersService {
-
-
+  
   user;
   constructor( private http: Http ) { }
 
+
+  // Get All Users
   fetchUsers(): Observable<any> {
    return this.http.get('http://localhost:3000/api/users', { withCredentials: true})
    .map((res: Response) => res.json())
@@ -24,16 +25,18 @@ export class UsersService {
    });
   }
 
+  // Get User Detail
+  getUser(id) {
+    return this.http.get(`http://localhost:3000/api/users/${id}`, { withCredentials: true})
+    .map(res => res.json())
+    .map(user => user)
+    .catch(e => {
+      console.log(e);
+      return Observable.throw(e);
+    });
+  }
 
-  // detailUser(id): Observable<any>  {
-  //   return this.http.get(`http://localhost:3000/api/users/${id}`)
-  //  .map((res: Response) => res.json())
-  //  .map(user => user)
-  //  .catch(e => {
-  //   return Observable.throw(e);
-  //  });
-  // }
-
+  // Add New User
    addUser(newUser): Observable<any> {
     return this.http.post('http://localhost:3000/api/users/signup', newUser)
     .map((res: Response) => res.json())
@@ -44,6 +47,7 @@ export class UsersService {
     });
   }
 
+   // User Login
   login(user) {
     return this.http.post('http://localhost:3000/api/users/login', user, { withCredentials: true })
     .map(res => res.json())
@@ -57,6 +61,7 @@ export class UsersService {
   });
   }
 
+   // User Logout
   logout() {
     return this.http.post('http://localhost:3000/api/users/logout', {})
       .map(res => res.json())
@@ -66,6 +71,7 @@ export class UsersService {
       });
 }
 
+ // User Update
   updateUser(updatedUser, id) {
     return this.http.patch('http://localhost:3000/api/users/update/' + id, updatedUser, {withCredentials: true})
     .map((res: Response) => res.json())
@@ -76,22 +82,23 @@ export class UsersService {
     });
   }
 
-  
+
+ // Delete User
+ removeUser(id): Observable<any> {
+    return this.http.delete(`http://localhost:3000/api/users/${id}`)
+    .map((res: Response ) => res.json())
+    .map(deleteUser => deleteUser)
+    .catch(e => {
+      console.log(e);
+      return Observable.throw(e);
+    });
+  }
+}// end of class
+
+
 
   // singleFile(formData) {
   //   return this.http.post('http://localhost:3000/single', formData)
   //   .map(res => res.json())
-  //   .catch(e => Observable.throw(e));
-  // }
-
-  // removeUser(id): Observable<any> {
-  //   return this.http.delete(`http://localhost:3000/api/users/${id}`)
-  //   .map((res: Response ) => res.json())
-  //   .map(deleteUser => user)
-  //   .catch(e => {
-  //     console.log(e);
-  //     return Observable.throw(e);
-  //   });
-  // }
-}
-
+  //   .catch(e => Observable.throw(e));}
+  //

@@ -15,8 +15,9 @@ export class UserComponent implements OnInit {
     private router: Router
   ) {}
   formData = new FormData();
-  user; 
+  user;
   success = true;
+
 //   user=local
 //   user.role === "IRONHACKER"
 //    navigate
@@ -30,16 +31,16 @@ chooseFile(input) {
       this.router.navigate(['login']);
  }
  this.user = JSON.parse(localStorage.getItem('user'));
- //console.log("otro maldito",this.user);
+ // console.log("otro maldito",this.user);
 }
 
-
+// Show alert when User update profile
  showAlert() {
   this.success = !this.success;
  }
 
+// Update User Component
  updateUser() {
-    
     console.log(this.user);
     // add every field in user to fromdata
     const keys = Object.keys(this.user);
@@ -48,25 +49,30 @@ chooseFile(input) {
     }
     console.log(this.user);
 
-
     this.usersService.updateUser(this.formData, this.user._id)
     .subscribe(user => {
       console.log(user);
       localStorage.setItem('user', JSON.stringify(user));
       this.formData = new FormData();
  });
-    this.showAlert();
+    this.showAlert(); // activating alert panel
+    setTimeout(() => {
+      location.reload();
+    }, 500); // refreshing picture when change
+}
+
+
+// Delete User Component
+deleteUser() {
+  this.usersService.removeUser(this.user._id)
+  .subscribe(user => {
+    this.router.navigate(['']);
+  });
+  console.log(this.user + 'was deleted');
 }
 
 manageFile(e) {
   this.formData.append(e.target.name, e.target.files[0]);
 }
 
-  // deleteUser() {
-  //   this.usersService.removeUser(this.user)
-  //   .subscribe(user => {
-  //     this.router.navigate(['']);
-  //   });
-  // }
- }
-  // class close
+ }// class close

@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+*{
+  font-family:'open-sans', sans-serif;
+}
+
+html, body{
+  height:100%;
+  width:100%;
+  margin:0px;
+}
+
+body{
+  background:#f7f7f7;
+}
+
+.profile{
+  background:#fff;
+  width:600px;
+  height:400px;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  -webkit-transform:translate(-50%, -50%);
+  border-radius:10px;
+  box-shadow: 0px 4px 10px #303030;
+  overflow:hidden;
+  z-index:100;
+}
+
+.slanted{
+  position:absolute;
+  left:-300px;
+  top:-100%;
+  width:630px;
+  height:200%;
+  background:black;
+  transform:rotateZ(28deg);
+  -webkit-transform:rotateZ(28deg);
+  background-image:url("https://thumbs.dreamstime.com/b/data-visualization-background-futuristic-design-hud-element-binary-code-coding-programming-concept-wide-90325232.jpg");
+  background-position:300px 130px;
+}
+
+.bubble img{
+  position:absolute;
+  margin:20px;
+  top:0px;
+  left:30px;
+  width:150px;
+  height:150px;
+  border-radius:100%;
+  border: solid white 2.5px;
+  cursor:pointer;
+}
+
+.name{
+  position:absolute;
+  top:60px;
+  left:340px;
+  color:#303030;
+}
+
+.stats{
+  position:absolute;
+  bottom:10px;
+  right:15px;
+  width:360px;
+  height:50px;
+  
+}
+
+.row{
+  display:inline-block;
+  width:32.5%;
+  height:50%;
+  text-align:center;
+}
+
+.count{
+  font-size:1.3em;
+}
+
+.job{
+  position:absolute;
+  width:100px;
+  margin-top:-15px;
+  left:95px;
+}
+
+.links{
+  position:absolute;
+}
+
+.fa-facebook-square{
+  cursor:pointer;
+  top:180px;
+  left:400px;
+  transform:scale(2);
+  -webkit-transform:scale(2);
+  color:#4867AA;
+}
+
+.fa-facebook-square:hover{
+  color:#324775;
+}
+
+.fa-dribbble{
+  cursor:pointer;
+  top:180px;
+  left:450px;
+  transform:scale(2);
+  -webkit-transform:scale(2);
+  color:#DF3E7B;
+}
+
+.fa-dribbble:hover{
+  color:#aa2f5c;
+}
+
+.fa-codepen{
+  cursor:pointer;
+  top:180px;
+  left:500px;
+  transform:scale(1.9);
+  -webkit-transform:scale(1.9);
+  color:#101010;
+}
+
+.fa-codepen:hover{
+  color:#5b5b5b;
+}
+
+.toggleUser{
+  cursor:pointer;
+  position:fixed;
+  width:80px;
+  height:80px;
+  top:45%;
+}
+
+.left{
+  left:10%;
+}
+
+.right{
+  right:10%;
+}
+
+i{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%) scale(3);
+  -webkit-transform:translate(-50%, -50%) scale(3);
+  color:#909090;
+  transition:0.2s;
+}
+
+.left:hover i{
+  color:#303030;
+}
+
+.right:hover i{
+  color:#303030;
+}
+
+.left:hover{
+  animation:leftMove 1s infinite ease-out;
+  -webkit-animation:leftMove 1s infinite ease-out;
+}
+
+.right:hover{
+  animation:rightMove 1s infinite;
+  -webkit-animation:rightMove 1s infinite;
+}
+
+@keyframes leftMove{
+  0%{
+    left:10%;
+  }
+  30%{
+    left:8%;
+  }
+  100%{
+    left:10%;
+  }
+}
+@-webkit-keyframes leftMove{
+  0%{
+    left:10%;
+  }
+  30%{
+    left:8%;
+  }
+  100%{
+    left:10%;
+  }
+}
+
+@keyframes rightMove{
+  0%{
+    right:10%;
+  }
+  30%{
+    right:8%;
+  }
+  100%{
+    right:10%;
+  }
+}
+@-webkit-keyframes rightMove{
+  0%{
+    right:10%;
+  }
+  30%{
+    right:8%;
+  }
+  100%{
+    right:10%;
+  }
+}
