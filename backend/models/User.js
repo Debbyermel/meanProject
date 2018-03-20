@@ -14,11 +14,15 @@ const userSchema = new Schema(
         },
         firstName:String,
         lastName: String,
-        avatar: { type: String, default: "http://www.petwave.com/-/media/Images/Center/Breed/Dogs/Toy-Group/Brussels-Griffon/Brussels-Griffon.ashx?w=450&hash=D41C87B628F9C64059A16E8BECCF966F6E82638E" },
+        avatar: { type: String, default:"https://avatars0.githubusercontent.com/u/15261454?s=400&u=9a2f860823a4fb8ccd401ecf89b5dfd240cb8ced&v=4"},
         following: [],
         followers: [],
         posts: [],
-        projects:[]
+        projects:[],
+        location:String,
+        bootcamp:String,
+        bio:[],
+        linkdinID: String,
         },
     {
         timestamps:{

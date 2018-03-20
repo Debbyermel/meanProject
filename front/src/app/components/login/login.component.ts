@@ -18,15 +18,14 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) { }
   user = {};
-  messageClass;
-  message;
-  processing = false;
+  logged = false;
 
 
   onLoginSubmit(e) {
     e.preventDefault();
     this.usersService.login(this.user)
     .subscribe(user => {
+     // console.log("maldito",user);
       this.router.navigate(['/dashboard']);
     });
   }
@@ -36,6 +35,4 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['users']);
     }
   }
-
-
 }

@@ -15,12 +15,14 @@ import { LoginComponent } from './components/login/login.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { UserComponent } from './components/user/user.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
-
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { FeedComponent } from './components/feed/feed.component';
 
 
 // Services
 import { UsersService } from './services/users.service';
+
+
 
 
 
@@ -30,7 +32,9 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent }, // Register Route
   { path: 'login', component: LoginComponent }, // Login  Route
   { path: 'users', component: UsersListComponent }, // List of Ironhackers Route
-  { path: ':id', component: UserComponent }, // User Profile ironhacker Route
+  { path: 'users/:id', component: UserDetailComponent }, // User Detail ironhacker Route
+  { path: 'dashboard', component: UserComponent }, // User Dashboard
+  { path: 'feed', component: FeedComponent }, // User Dashboard
   { path: '**', component: HomeComponent } //  Catch-All Route
 ];
 
@@ -43,7 +47,9 @@ const appRoutes: Routes = [
     NavbarComponent,
     RegisterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    UserDetailComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,

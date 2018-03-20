@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
 import {UsersService} from '../../services/users.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -11,28 +11,62 @@ import {UsersService} from '../../services/users.service';
 export class UserComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    private usersService: UsersService
-  ) { }
-  user = {};
-//     user=local
+    private usersService: UsersService,
+    private router: Router
+  ) {}
+  formData = new FormData();
+  user; 
+  success = true;
+//   user=local
 //   user.role === "IRONHACKER"
 //    navigate
 
-  ngOnInit() {
-    if ( !localStorage.getItem('user') ) {
-      this.router.navigate(['login']);
-    }
-    this.user = JSON.parse(localStorage.getItem('user'));
-  }
+chooseFile(input) {
+  input.click();
+}
 
-  updateUser(){
-    this.usersService.updateUser(this.user)
-    .subscribe(user=>{
+  ngOnInit() {
+ if (!localStorage.getItem('user')) {
+      this.router.navigate(['login']);
+ }
+ this.user = JSON.parse(localStorage.getItem('user'));
+ //console.log("otro maldito",this.user);
+}
+
+
+ showAlert() {
+  this.success = !this.success;
+ }
+
+ updateUser() {
+    
+    console.log(this.user);
+    // add every field in user to fromdata
+    const keys = Object.keys(this.user);
+    for (const key of keys) {
+      this.formData.append(key, this.user[key]);
+    }
+    console.log(this.user);
+
+
+    this.usersService.updateUser(this.formData, this.user._id)
+    .subscribe(user => {
       console.log(user);
       localStorage.setItem('user', JSON.stringify(user));
-      alert('exito');
-    });
-  }
-
+      this.formData = new FormData();
+ });
+    this.showAlert();
 }
+
+manageFile(e) {
+  this.formData.append(e.target.name, e.target.files[0]);
+}
+
+  // deleteUser() {
+  //   this.usersService.removeUser(this.user)
+  //   .subscribe(user => {
+  //     this.router.navigate(['']);
+  //   });
+  // }
+ }
+  // class close

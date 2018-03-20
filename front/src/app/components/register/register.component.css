@@ -1,0 +1,135 @@
+/* .container-register{
+            font-family: 'Roboto', sans-serif;   
+            background:url('https://cdn.pearltrees.com/v2static/asset/homev2/background_home.jpg?20180315-17h02-4655');
+            background-repeat:none;
+            background-size:cover;
+            position:relative;
+            height:100vh;
+            overflow:hidden;
+            color:#fff;
+      }
+.box{
+    position:absolute;
+    height:100%;
+    width:100%;
+    font-family:Helvetica;
+    color:#fff;
+    background:rgba(0,0,0,0.13);
+    padding:30px 0px;
+  
+}
+
+.box h1{
+  text-align:center;
+  margin:30px 0;
+  font-size:30px;
+}
+.box input{
+  display:block;
+  width:350px;
+  margin:20px auto;
+  padding:15px;
+  background:rgba(0,0,0,0.2);
+  color:#fff;
+  border:0;
+}
+
+.btn-register{
+  background-color: #35B729;
+  border: none;
+  color:white;
+  font-size: 12px;
+  font-weight: 300;
+  box-sizing: content-box;
+  padding:10px;
+  border-radius: 10px;
+  width: 60px;
+  position: absolute;
+  right:30px;
+  bottom: 30px;
+  cursor: pointer;
+}
+.btn-register:active{
+  background:red;
+} */
+
+
+.container{
+  background:url('http://b2blink.in/wp-content/uploads/2016/03/background-learner.jpg'); 
+  background-size: cover;
+  font-family: "Roboto";
+  border-radius: 15px;
+  margin-top:30px;
+    width: 70%;
+    height:80vh;
+    position:relative;
+    overflow:hidden;
+    color: #fff;
+}
+
+.box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  background: #fff;
+  width: 380px;
+  margin: -140px 0 0 -182px;
+  padding: 40px;
+  background:rgba(0,0,0,0.13);
+  border-radius: 15px;
+}
+  
+ h2 {
+    margin: 0 0 20px;
+    line-height: 1;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    text-align:center;
+  }
+
+  input {
+    outline: none;
+    display: block;
+    width: 100%;
+    margin: 0 0 20px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    color: #ccc;
+    font-family: "Roboto";
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 400;
+    transition: 0.2s linear;
+  }
+    input:focus {
+      color: #333;
+      border: 1px solid #2ecc71;
+    }
+  
+  
+.btn-register {
+    cursor: pointer;
+    background: #2ecc71;
+    width: 100%;
+    padding: 10px 15px;
+    border: 0;
+    color: #fff;
+    font-family: "Roboto";
+    font-size: 14px;
+    font-weight: 400;
+    transition: 0.2s linear;
+    animation: pulse 8s infinite;
+}
+    
+
+    @keyframes pulse {
+      0% {
+        background-color: #8bd;
+      }
+      100% {
+        background-color: #1a9;
+      }
+    }
+  
+

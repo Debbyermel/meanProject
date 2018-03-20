@@ -1,13 +1,12 @@
-<h1 class="page-header">Register Page</h1>
-<div *ngIf="show">
-<!-- Registration Form -->
-<form [formGroup]="form" (submit)="onRegisterSubmit()">
+<div class="container"> 
+ <div *ngIf="show"> <!-- Hide form after submit-->
+<form [formGroup]="form" (submit)="onRegisterSubmit()" class="box">
+    <h2 class="page-header">Register Page</h2>
 
   <!-- Username Input -->
   <div class="form-group">
-    <label for="username">Username</label>
     <div [ngClass]="{'has-error': (form.controls.username.errors && form.controls.username.dirty), 'has-success': !form.controls.username.errors}">
-      <input type="text" name="username" class="form-control" autocomplete="off" placeholder="*Username" formControlName="username" />
+      <input type="text" name="username" class="form-control" autocomplete="off" placeholder="Username" formControlName="username" />
       <!-- Validation -->
       <ul class="help-block">
         <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">This field is required</li>
@@ -19,9 +18,8 @@
 
   <!-- Email Input -->
   <div class="form-group">
-    <label for="email">Email</label>
     <div [ngClass]="{'has-error': (form.controls.email.errors && form.controls.email.dirty), 'has-success': !form.controls.email.errors}">
-      <input type="text" name="email" class="form-control" autocomplete="off" placeholder="*Email" formControlName="email" />
+      <input type="text" name="email" class="form-control" autocomplete="off" placeholder="Email" formControlName="email" />
       <!-- Validation -->
       <ul class="help-block">
         <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">This field is required</li>
@@ -30,11 +28,11 @@
       </ul>
     </div>
   </div>
+
 <!-- Password Input -->
   <div class="form-group">
-    <label for="password">Password</label>
     <div [ngClass]="{'has-error': (form.controls.password.errors && form.controls.password.dirty), 'has-success': !form.controls.password.errors}">
-      <input type="password" name="password" class="form-control" autocomplete="off" placeholder="*Password" formControlName="password" />
+      <input type="password" name="password" class="form-control" autocomplete="off" placeholder="Password" formControlName="password" />
       <!-- Validation -->
       <ul class="help-block">
         <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required</li>
@@ -46,9 +44,9 @@
 
   <!-- Confirm Password Input -->
   <div class="form-group">
-    <label for="confirm">Confirm Password</label>
+
     <div [ngClass]="{'has-error': (form.controls.confirm.errors && form.controls.confirm.dirty) || (form.errors?.matchingPasswords && form.controls.confirm.dirty), 'has-success': !form.controls.confirm.errors && !form.errors?.matchingPasswords}">
-      <input type="password" name="confirm" class="form-control" autocomplete="off" placeholder="*Confirm Password" formControlName="confirm" />
+      <input type="password" name="confirm" class="form-control" autocomplete="off" placeholder="Confirm Password" formControlName="confirm" />
       <!-- Validation -->
       <ul class="help-block">
         <li *ngIf="form.controls.confirm.errors?.required && form.controls.confirm.dirty">This field is required</li>
@@ -58,22 +56,23 @@
   </div>
 
   <!-- Submit Input -->
-  <input [disabled]="!form.valid" type="submit" class="btn btn-primary" value="Submit" z/>
+  <input [disabled]="!form.valid" type="submit" class="btn-register" value="Submit" />
   <!-- disable prevents user send form till validation matches -->
-
 </form>
-<!-- Registration Form /-->
+<!-- End of Registration Form /-->
 </div>
 
-
+<!-- Confirmation modal -->
 <div *ngIf="!show"  class="jumbotron text-xs-center">
-  <h1 class="display-3">Thank You for subscribing!</h1>
-  <p class="lead">Fell free to navigate and see all about the <strong>Ironhackers</strong>.</p>
+  <h1 class="display-3">Thank You <strong>Ironhackers</strong>!</h1>
+  <p class="lead">Please take a moment for customizing your profile and show case your projects.</p>
   <hr>
   <p>
     Having trouble? <a href="#">Contact us</a>
   </p>
   <p class="lead">
-    <a class="btn btn-primary btn-sm" routerLink="/" role="button">Continue to homepage</a>
+    <a class="btn btn-primary btn-sm" routerLink="/user" role="button">Continue to your profile</a>
   </p>
-</div>
+</div> 
+
+

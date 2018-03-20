@@ -25,9 +25,6 @@ export class RegisterComponent implements OnInit {
    this.show = !this.show;
   }
 
-  toogleLogin() {
-
-  }
    // Function to create registration form
   createForm() {
     this.form = this.formBuilder.group({

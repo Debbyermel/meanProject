@@ -1,7 +1,31 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const mongoose = require("mongoose");
 const User = require("../models/User");
 const passport = require("passport");
+const multer = require("multer");
+const uploads = multer({dest: 'public/uploads'});
+
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  User.find()
+  .then(users=>res.send(users))
+  .catch(e => res.send(e));
+});
+
+
+router.patch('/update/:id', uploads.single('profilePic'), (req,res)=>{
+  if(req.file){
+    console.log("nunca sucedo!");
+    const profilePic = 'http://localhost:3000/uploads/'+req.file.filename;
+    req.body['avatar'] = profilePic;
+  }
+  //console.log(req.body, req.user); 
+  //remember the login id useless and fuzzy
+  User.findByIdAndUpdate(req.params.id, req.body, {new:true})
+  .then(user=>res.send(user))
+  .catch(e=>res.send(e));
+});
 
 router.post('/signup', (req,res,next)=>{
   console.log(req.body)
@@ -16,11 +40,13 @@ router.post('/login', passport.authenticate('local'), (req, res)=>{
 });
 
 
-/* GET users listing. */
-//sustituir esta por un User.find
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.post('/logout', (req, res)=>{
+   req.logout();
+   res.status(200).json({msg: "success"})
 });
+
+
+
 
 router.patch('/:id', (req,res)=>{
   User.findOneAndUpdate(req.params.id, req.body, {new:true})

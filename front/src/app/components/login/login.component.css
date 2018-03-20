@@ -1,0 +1,77 @@
+.container{
+  background:url('http://b2blink.in/wp-content/uploads/2016/03/background-learner.jpg'); 
+  background-size: cover;
+  font-family: "Roboto";
+  border-radius: 15px;
+  margin-top:30px;
+    width: 70%;
+    height:80vh;
+    position:relative;
+    overflow:hidden;
+    color: #fff;
+}
+
+.box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  background: #fff;
+  width: 380px;
+  margin: -140px 0 0 -182px;
+  padding: 40px;
+  background:rgba(0,0,0,0.13);
+  border-radius: 15px;
+}
+  
+ h2 {
+    margin: 0 0 20px;
+    line-height: 1;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    text-align:center;
+  }
+
+  input {
+    outline: none;
+    display: block;
+    width: 100%;
+    margin: 0 0 20px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    color: #ccc;
+    font-family: "Roboto";
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 400;
+    transition: 0.2s linear;
+  }
+    input:focus {
+      color: #333;
+      border: 1px solid #2ecc71;
+    }
+  
+  
+.btn-register {
+    cursor: pointer;
+    background: #2ecc71;
+    width: 100%;
+    padding: 10px 15px;
+    border: 0;
+    color: #fff;
+    font-family: "Roboto";
+    font-size: 14px;
+    font-weight: 400;
+    transition: 0.2s linear;
+    animation: pulse 8s infinite;
+}
+    
+
+    @keyframes pulse {
+      0% {
+        background-color: #8bd;
+      }
+      100% {
+        background-color: #1a9;
+      }
+    }

@@ -1,41 +1,27 @@
-
-<nav class="navbar navbar-expand-lg navbar-inverse">
-    <nav class="navbar "></nav>
-    <a class="navbar-brand" href="#">IronGram</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-
-        <li class="nav-item active" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-          <a class="nav-link" routerLink="/">Home</a>
-        </li>
-
-        <li class="nav-item active" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-          <a class="nav-link" routerLink="/user">News</a>
-        </li>
-
-        <li class="nav-item active"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-          <a class="nav-link" routerLink="/register"></a>
-        </li>
-
-
-        <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a routerLink="/register" class="btn btn-primary">Register</a>
-        </li>
-        <li *ngIf="!logged">
-           <a routerLink="/login" class="btn btn-dark">Login</a>
-        </li>
-            <li *ngIf="logged">
-            <a href="/logout" class="btn btn-success">Logout</a> 
-        </li>
-        </ul>
-           
-      </ul>
-  
-    </div>
+<div id="all">
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/">HOME</a>
+      </li>
+      <li>
+        <a routerLink="/register">REGISTER</a>
+      </li>
+      <li *ngIf="logged">
+        <a routerLink="/login">LOGIN</a>
+      </li>
+      <li>
+        <a routerLink="/users">IRONHACKERS</a>
+      </li>
+      <li *ngIf="!logged">
+        <a routerLink="/login" (click)="logout()">LOGOUT</a>
+      </li>
+      <li>
+        <a routerLink="/feed">FEED</a>
+      </li>
+      <li>
+        <a routerLink="/contact">CONTACT</a>
+      </li>
+    </ul>
   </nav>
-
+</div>
