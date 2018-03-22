@@ -1,45 +1,29 @@
-<section class="wrapper">
-    <div class="container-fostrap">
-       
-      <div>
-            <!-- <img src="https://4.bp.blogspot.com/-7OHSFmygfYQ/VtLSb1xe8kI/AAAAAAAABjI/FxaRp5xW2JQ/s320/logo.png" class="fostrap-logo"/> -->
-            <h1 class="heading">
-                Expore Ironhackers 
-            </h1>
-        </div>
 
-        <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-4" *ngFor = "let user of usersList">
-
-                        <div class="card">
-                            <img class="img-card" src="{{user.avatar}}" height="200" width="200" alt="{{user.username}}" />
-                          
-                            <div class="card-content">
-                                <h2 class="card-title">
-                                 {{user.firstName}} {{user.lastName}}
-                                </h2>
-                                <p class="city">
-                                    {{user.bootcamp}}  
-                                </p>
-                            </div>
-                            <div class="card-read-more">
-                                <a [routerLink]="['/users', user._id]" class="btn btn-link btn-block">
-                                    See More about {{user.firstName}} </a>
-
-                            </div>
-
+<div class="container">
+            <div class="span4">
+                 <div class="thumbnail">
+                        <div class="caption">
+                            <h4>Irongram Galery</h4>
+                            <p>Take a close look to the Ironhackers</p> 
                         </div>
                     </div>
-
-             
-                </div>
-            </div>
-        </div>
+              </div>
+</div>
+      
+<div class="container">
+                    <div class="main">
+                        <div class="box" *ngFor="let user of usersList">
+                            <img src="{{ user.avatar }}" />
+                                <div class="overlay">
+                                </div>
+                            <a class="more" [routerLink]="['/users', user._id]"> More About {{ user.firstName }} </a>      
+                        </div>  
+      </div>
     </div>
-</section>
+                
 
 
 
 
+    
+    

@@ -10,7 +10,8 @@
               <li class="first"><h1>{{singleUser.firstName}} {{singleUser.lastName}}</h1></li>
               <li class="second"><h3>Location: {{singleUser.location}}</h3></li>
               <li class="third"><h3>Bootcamp: {{singleUser.bootcamp}}</h3></li>
-              <li class="four"><h3>Available for Hire: {{singleUser.hire}}</h3></li>
+              <li class="four" *ngIf= "singleUser.hire"><h3>Available for Hire</h3></li>
+              <li class="four" *ngIf= "!singleUser.hire"><h3>No Available for Hire</h3></li>
           </ul>     
         <div class="links">
           <a href="https://twitter.com/"><i class="fa fa-twitter fa-lg"></i></a>

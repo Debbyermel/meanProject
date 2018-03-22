@@ -50,7 +50,7 @@
       <!-- Validation -->
       <ul class="help-block">
         <li *ngIf="form.controls.confirm.errors?.required && form.controls.confirm.dirty">This field is required</li>
-        <li *ngIf="form.errors?.matchingPasswords && form.controls.confirm.dirty">Password do not match</li>
+      
       </ul>
     </div>
   </div>
@@ -58,7 +58,7 @@
     <!-- Secret Word -->
     <div class="form-group">
         <div [ngClass]="{'has-error': (form.controls.secretWord.errors && form.controls.secretWord.dirty), 'has-success': !form.controls.secretWord.errors}">
-          <input type="text" name="secretWord" class="form-control" autocomplete="off" placeholder="Enter Secret Word" formControlName="secretWord" />
+          <input type="text" name="secretWord" class="form-control" autocomplete="off" placeholder="Enter Secret Word" formControlName="secretWord"                                />
           <!-- Validation -->
           <ul class="help-block">
             <li *ngIf="form.controls.secretWord.errors?.required && form.controls.secretWord.dirty">This field is required</li>

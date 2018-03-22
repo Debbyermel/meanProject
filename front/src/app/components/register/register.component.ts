@@ -12,6 +12,8 @@ export class RegisterComponent implements OnInit {
 
   form: FormGroup;
   show = true;
+  secretWord = 'MEAN';
+  optionWord = 'gd';
 
   constructor(
     private formBuilder: FormBuilder,

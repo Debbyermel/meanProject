@@ -10,11 +10,11 @@ const userSchema = new Schema(
         role:{
             type:String,
             enum:["GUEST", "ADMIN", "IRONHACKER"],
-            default:"GUEST"
+            default:"IRONHACKER"
         },
         firstName:String,
         lastName: String,
-        avatar: { type: String, default:"http://telegram.org.ru/uploads/posts/2017-10/1509306863_logo_white.png"},
+        avatar: { type: String, default:"https://pbs.twimg.com/profile_images/922856272332054528/UB_AjsnV_400x400.jpg"},
         following: [],
         followers: [],
         posts: [],
