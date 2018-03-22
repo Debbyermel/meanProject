@@ -14,16 +14,18 @@ const userSchema = new Schema(
         },
         firstName:String,
         lastName: String,
-        avatar: { type: String, default:"https://avatars0.githubusercontent.com/u/15261454?s=400&u=9a2f860823a4fb8ccd401ecf89b5dfd240cb8ced&v=4"},
+        avatar: { type: String, default:"http://telegram.org.ru/uploads/posts/2017-10/1509306863_logo_white.png"},
         following: [],
         followers: [],
         posts: [],
-        projects:[],
+        projectOne: String, 
+        projectTwo: String, 
+        projectThree: String, 
         location:String,
         bootcamp:String,
         bio:[],
-        linkdinID: String,
-        hire: Boolean 
+        hire: Boolean,
+        secretWord: {type: String, default: "MEAN"}
         },
     {
         timestamps:{

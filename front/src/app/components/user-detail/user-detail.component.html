@@ -1,36 +1,52 @@
 
-    <div class="toggleUser left" *ngIf="singleUser">
-      <i class="fa fa-chevron-left" aria-hidden="true"></i>
-    </div>
-    <div class="profile">
-      <div class="slanted"></div>
-      <div class="bubble" height:150px width:150px>
-        <img src="{{singleUser.avatar}}" />
+    <div class="profile" *ngIf="singleUser">
+       <div class="user-card"></div>
+       <div class="circle" height:150px width:150px>
+         <img src="{{singleUser.avatar}}" />
+       </div>
+  
+      <div>
+          <ul>
+              <li class="first"><h1>{{singleUser.firstName}} {{singleUser.lastName}}</h1></li>
+              <li class="second"><h3>Location: {{singleUser.location}}</h3></li>
+              <li class="third"><h3>Bootcamp: {{singleUser.bootcamp}}</h3></li>
+              <li class="four"><h3>Available for Hire: {{singleUser.hire}}</h3></li>
+          </ul>     
+        <div class="links">
+          <a href="https://twitter.com/"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="https://www.linkedin.com/"><i class="fa fa-linkedin fa-lg"></i></a>
+          <a href="https://github.com/"><i class="fa fa-github fa-lg"></i></a>
+          <a class="mail" href="mailto:{{ singleUser.email }}"><i class="fa fa-envelope fa-lg message"></i></a>
+        </div>
+      </div>
 
-      </div>
-  
-      <div class="name">
-        <!--check it --><h1>{{singleUser.firstName}} {{singleUser.lastName}}</h1>
-        <p class="job">{{singleUser.location}}</p>
-        <p class="job">{{singleUser.bootcamp}}</p>
-      </div>
-      <div class="links">
-        <i class="fa fa-facebook-square" aria-hidden="true"></i>
-        <i class="fa fa-dribbble" aria-hidden="true"></i>
-        <i class="fa fa-codepen" aria-hidden="true"></i>
-      </div>
-      <div class="stats">
-        <div class="row">Followers</div>
-        <div class="row">Following</div>
-        <div class="row">Posts</div>
-  
-        
-        <div class="row count">2</div>
-        <div class="row count">18</div>
-        <div class="row count">1</div>
-      </div>
-    </div>
-    <div class="toggleUser right">
-      <i class="fa fa-chevron-right" aria-hidden="true"></i>
-    </div>
-  
+          <div class="bio-container">
+              <h3 class="bio"><span class="first-letter">"</span>{{ singleUser.bio }}</h3>
+          </div>
+
+ 
+    <div class="d-flex justify-content-center view view-thumb">
+             <div class="p-2 square">
+               <div class="overlay mask">
+
+                  <h2>Project 1</h2>
+                  <p>Game</p>
+                  <a href="{{ singleUser.projectOne }}" target="_blank" class="info">See Demo</a> 
+               </div>  
+            </div>
+
+            <div class="p-2 mask square">
+                <div class=overlay></div>
+                <h2>Project 2</h2>
+                <p>Game</p>
+                <a href="{{ singleUser.projectTwo }}" target="_blank" class="info">See Demo</a> 
+            </div>
+            <div class="p-2 mask square">
+                <div class=overlay></div>
+                <h2>Project 3</h2>
+                <p>Game</p>
+                <a href="{{ singleUser.projectThree }}" target="_blank" class="info">See Demo</a> 
+            </div>
+
+           </div>
+          </div>

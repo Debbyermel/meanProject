@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import {Router} from '@angular/router';
 import { Observable } from 'rxjs/';
 import 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -11,7 +12,9 @@ import 'rxjs/add/observable/throw';
 export class UsersService {
   
   user;
-  constructor( private http: Http ) { }
+  constructor(
+   private http: Http,
+    private route: Router ) { }
 
 
   // Get All Users
@@ -64,7 +67,10 @@ export class UsersService {
    // User Logout
   logout() {
     return this.http.post('http://localhost:3000/api/users/logout', {})
-      .map(res => res.json())
+      .map(res => {
+        localStorage.removeItem('user');
+        res.json();
+      })
       .catch(e => {
         console.log(e);
         return Observable.throw(e);

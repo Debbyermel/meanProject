@@ -1,3 +1,4 @@
+
 .container{
   background:url('http://b2blink.in/wp-content/uploads/2016/03/background-learner.jpg'); 
   background-size: cover;
@@ -65,13 +66,13 @@
     transition: 0.2s linear;
     animation: pulse 8s infinite;
 }
-    
 
-    @keyframes pulse {
-      0% {
-        background-color: #8bd;
-      }
-      100% {
-        background-color: #1a9;
-      }
-    }
+@keyframes pulse {
+  0% {
+    background-color: #8bd;
+  }
+  100% {
+    background-color: #1a9;
+  }
+}
+   

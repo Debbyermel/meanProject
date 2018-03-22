@@ -1,22 +1,28 @@
 <div id="all">
   <nav>
     <ul>
+        <li>
+            <img src="../../../assets/Iron.png" height="100px" weight="auto" class="logo" /> 
+          </li>
       <li>
         <a routerLink="/">HOME</a>
       </li>
-      <li>
-        <a routerLink="/register">REGISTER</a>
+      <li *ngIf="!user">
+        <a  routerLink="/register">REGISTER</a>
       </li>
-      <li *ngIf="logged">
+      <li *ngIf="user">
+          <a routerLink="/dashboard">DASHBOARD</a>
+        </li>
+      <li  *ngIf="!user">
         <a routerLink="/login">LOGIN</a>
       </li>
       <li>
         <a routerLink="/users">IRONHACKERS</a>
       </li>
-      <li *ngIf="!logged">
+      <li *ngIf="user">
         <a routerLink="/login" (click)="logout()">LOGOUT</a>
       </li>
-      <li>
+      <li *ngIf="!user" (mouseenter)="mouseHover()">
         <a routerLink="/feed">FEED</a>
       </li>
       <li>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UsersService} from '../../services/users.service';
 import {Router} from '@angular/router';
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -9,23 +10,28 @@ import {Router} from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  logged = !true;
+  logged = false;
   user;
   constructor(
     private session: UsersService,
     private route: Router
   ) { }
 
-
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
+  }
+  mouseHover(e) {
+    console.log('hovered', e);
+  }
 
   logout() {
     this.session.logout()
     .subscribe(data => {
-      this.route.navigate(['login']);
       localStorage.removeItem('user');
+      this.user = null;
+      this.route.navigate(['/']);
     });
   }
 
 }
+

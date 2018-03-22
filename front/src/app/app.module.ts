@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms'; // changed for reactive form
 import { HttpModule } from '@angular/http';
@@ -17,12 +18,11 @@ import { UserComponent } from './components/user/user.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { FeedComponent } from './components/feed/feed.component';
-
+import { TestingComponent } from './components/testing/testing.component';
 
 // Services
 import { UsersService } from './services/users.service';
-
-
+import { BlogService } from './services/blog.service';
 
 
 
@@ -34,7 +34,8 @@ const appRoutes: Routes = [
   { path: 'users', component: UsersListComponent }, // List of Ironhackers Route
   { path: 'users/:id', component: UserDetailComponent }, // User Detail ironhacker Route
   { path: 'dashboard', component: UserComponent }, // User Dashboard
-  { path: 'feed', component: FeedComponent }, // User Dashboard
+  { path: 'feed', component: FeedComponent }, // Feed Blog
+  { path: 'test', component: TestingComponent }, // Default Route
   { path: '**', component: HomeComponent } //  Catch-All Route
 ];
 
@@ -49,17 +50,18 @@ const appRoutes: Routes = [
     HomeComponent,
     LoginComponent,
     UserDetailComponent,
-    FeedComponent
+    FeedComponent,
+    TestingComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
-
+    RouterModule.forRoot(appRoutes),
+    Angular2FontawesomeModule 
   ],
-  providers: [UsersService],
+  providers: [UsersService, BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

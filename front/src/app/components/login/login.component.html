@@ -1,12 +1,14 @@
-<div class="container-login">
+<div class="container"> 
+<div class="box">
 <!-- Login Form -->
 <form (submit)="onLoginSubmit($event)">
+    <h2 class="page-header">Register Page</h2>
 
   <!-- Username Field -->
   <div class="form-group">
     <label for="username">Email</label>
     <div >
-      <input [(ngModel)]="user.email" class="form-control" type="text" name="email" />
+      <input [(ngModel)]="user.email" class="form-control" type="text" name="email" autocomplete="off" placeholder="Email" />
       <!-- Validation -->
     </div>
   </div>
@@ -20,6 +22,15 @@
     </div>
   </div>
   <!-- Submit Button -->
-  <input class="btn btn-primary" type="submit" value="Login" />
+  <input class="btn btn-primary" type="submit" value="Login" autocomplete="off" placeholder="Password"  />
 </form>
 </div>
+</div>
+
+
+
+
+
+
+
+

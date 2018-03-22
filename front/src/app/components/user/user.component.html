@@ -24,11 +24,17 @@
                 <label>Bootcamp</label>
                 <input [(ngModel)]="user.bootcamp" type="text" class="form-control" placeholder="Mexico" />
                 <br/>
-                <label>Project Url</label>
-                <input [(ngModel)]="user.projects" type="url" class="form-control" />
+                <label>Project One</label>
+                <input [(ngModel)]="user.projectOne" type="url" class="form-control" />
+                <br/>
+                <label>Project Two</label>
+                <input [(ngModel)]="user.projectTwo" type="url" class="form-control" />
+                <br/>
+                <label>Project Three</label>
+                <input [(ngModel)]="user.projectThree" type="url" class="form-control" />
                 <br/>
                 <label>Bio</label>
-                <textarea [(ngModel)]="user.bio" class="form-control" placeholder="Tell us a little bit about yourself"></textarea>
+                <textarea [(ngModel)]="user.bio" class="form-control" placeholder="Short intro about yourself" maxlength="120"></textarea>
                 <br/>
                 <label>Available for hire</label>
                 <input [(ngModel)]="user.hire"  type="checkbox" name="hire" value="true" checked>

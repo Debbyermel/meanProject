@@ -1,35 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-*{
-  font-family:'open-sans', sans-serif;
-}
-
-html, body{
-  height:100%;
-  width:100%;
-  margin:0px;
-}
-
-body{
-  background:#f7f7f7;
-}
 
 .profile{
   background:#fff;
-  width:600px;
-  height:400px;
+  width:900px;
+  height:690px;
   position:fixed;
-  top:50%;
+  top:56%;
   left:50%;
   transform:translate(-50%, -50%);
-  -webkit-transform:translate(-50%, -50%);
   border-radius:10px;
   box-shadow: 0px 4px 10px #303030;
   overflow:hidden;
   z-index:100;
 }
 
-.slanted{
+.user-card{
   position:absolute;
   left:-300px;
   top:-100%;
@@ -42,7 +26,7 @@ body{
   background-position:300px 130px;
 }
 
-.bubble img{
+.circle img{
   position:absolute;
   margin:20px;
   top:0px;
@@ -54,11 +38,31 @@ body{
   cursor:pointer;
 }
 
-.name{
+li {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding-left: 300px;
+  padding-top: 10px;
+}
+
+.bio-container{
+  align-items: center;
   position:absolute;
-  top:60px;
-  left:340px;
+  top:320px;
+  left:350px;
+  width:480px;
+  height: 150px;
   color:#303030;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
+  text-align: center;
+}
+.bio{
+  line-height:30px;
+  display: inline;
+  word-wrap: wrap none;
 }
 
 .stats{
@@ -66,85 +70,53 @@ body{
   bottom:10px;
   right:15px;
   width:360px;
-  height:50px;
-  
-}
-
-.row{
-  display:inline-block;
-  width:32.5%;
-  height:50%;
-  text-align:center;
-}
-
-.count{
-  font-size:1.3em;
-}
-
-.job{
-  position:absolute;
-  width:100px;
-  margin-top:-15px;
-  left:95px;
+  height:50px; 
 }
 
 .links{
   position:absolute;
+  left:250px;
+  padding: 5px;
 }
 
-.fa-facebook-square{
+.fa-twitter{
   cursor:pointer;
-  top:180px;
-  left:400px;
+  left:300px;
   transform:scale(2);
-  -webkit-transform:scale(2);
   color:#4867AA;
 }
-
-.fa-facebook-square:hover{
+.fa-twitter:hover{
   color:#324775;
 }
 
-.fa-dribbble{
+.fa-linkedin{
   cursor:pointer;
-  top:180px;
-  left:450px;
+  left:350px;
   transform:scale(2);
-  -webkit-transform:scale(2);
-  color:#DF3E7B;
+  color:rgb(26, 11, 242);
 }
 
-.fa-dribbble:hover{
-  color:#aa2f5c;
+.fa-linkedin:hover{
+  color:#3650c2;
 }
 
-.fa-codepen{
+.fa-github{
   cursor:pointer;
-  top:180px;
-  left:500px;
+  left:400px;
   transform:scale(1.9);
-  -webkit-transform:scale(1.9);
   color:#101010;
 }
-
-.fa-codepen:hover{
+.fa-github:hover{
   color:#5b5b5b;
 }
 
-.toggleUser{
-  cursor:pointer;
-  position:fixed;
-  width:80px;
-  height:80px;
-  top:45%;
+.fa-envelope{
+  left:450px;
+  transform:scale(1.9);
+  color:#3d3b3b;
 }
-
-.left{
-  left:10%;
-}
-
-.right{
-  right:10%;
+.fa-envelope:hover{
+  color:#3650c2;
 }
 
 i{
@@ -152,71 +124,118 @@ i{
   top:50%;
   left:50%;
   transform:translate(-50%, -50%) scale(3);
-  -webkit-transform:translate(-50%, -50%) scale(3);
   color:#909090;
   transition:0.2s;
 }
 
-.left:hover i{
-  color:#303030;
+.view {
+   width: 70%;
+   height: 170px;
+   margin: 10px;
+   border: 10px solid #fff;
+   overflow: hidden;
+   position: relative;
+   text-align: center;
+   box-shadow: 1px 1px 2px #e6e6e6;
+   cursor: default;
+   left: 230px;
+   bottom: -35%;
+   background: #fff url("https://assets.wordpress.envato-static.com/uploads/2015/05/01-flappy-smasher-game-html5-preview.jpg") no-repeat center center;
+}
+.overlay{
+  background-color: rgba(0,0,0,0.8);
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 
-.right:hover i{
-  color:#303030;
+.square{
+  position: relative;
+  /*background: #fff url("https://assets.wordpress.envato-static.com/uploads/2015/05/01-flappy-smasher-game-html5-preview.jpg") no-repeat center center;*/
+  width: 33%;
+  height: auto;
+  padding: 0 !important;
 }
 
-.left:hover{
-  animation:leftMove 1s infinite ease-out;
-  -webkit-animation:leftMove 1s infinite ease-out;
+.view img {
+   display: block;
+   position: relative;
+}
+.view h2 {
+   text-transform: uppercase;
+   color: #fff;
+   text-align: center;
+   position: relative;
+   font-size: 17px;
+   padding: 10px;
+   background: rgba(0, 0, 0, 0.8);
+   margin: 20px 0 0 0;
+}
+.view p {
+   font-family: Georgia, serif;
+   font-style: italic;
+   font-size: 12px;
+   position: relative;
+   color: #fff;
+   padding: 10px 20px 20px;
+   text-align: center;
 }
 
-.right:hover{
-  animation:rightMove 1s infinite;
-  -webkit-animation:rightMove 1s infinite;
+
+.view-thumb img {
+   transition: all 0.4s ease-in-out 0.2s;
+   filter: alpha(opacity=100);
+   opacity: 1;
+}
+.view-thumb .mask {
+   background-color: rgba(0,0,0,0.8);
+   filter: alpha(opacity=0);
+   opacity: 0;
+   transform: scale(0) rotate(-180deg);
+   transition: all 0.4s ease-in;
+   border-radius: 0px;
 }
 
-@keyframes leftMove{
-  0%{
-    left:10%;
-  }
-  30%{
-    left:8%;
-  }
-  100%{
-    left:10%;
-  }
+.view-thumb:hover .mask {
+   filter: alpha(opacity=100);
+   opacity: 1;
+   transform: scale(1) rotate(0deg);
+   transition-delay: 0.2s;
+} 
+.view-thumb:hover img {
+   transform: scale(0);
+   filter: alpha(opacity=0);
+   opacity: 0;
+   transition-delay: 0s;
 }
-@-webkit-keyframes leftMove{
-  0%{
-    left:10%;
-  }
-  30%{
-    left:8%;
-  }
-  100%{
-    left:10%;
-  }
+.view-thumb:hover h2,
+.view-thumb:hover p,
+.view-thumb:hover a.info {
+   filter: alpha(opacity=100);
+   opacity: 1;
+   transition-delay: 0.5s;
+}
+/* End Hover effects */ 
+
+.view a.info {
+   display: inline-block;
+   text-decoration: none;
+   padding: 7px 14px;
+   background: #000;
+   color: #fff;
+   text-transform: uppercase;
+   position: relative;
+   box-shadow: 0 0 1px #000;
+}
+.view a.info:hover {
+   box-shadow: 0 0 5px #000;
 }
 
-@keyframes rightMove{
-  0%{
-    right:10%;
-  }
-  30%{
-    right:8%;
-  }
-  100%{
-    right:10%;
-  }
-}
-@-webkit-keyframes rightMove{
-  0%{
-    right:10%;
-  }
-  30%{
-    right:8%;
-  }
-  100%{
-    right:10%;
-  }
-}
+
+
+
+
+
+
+
+
