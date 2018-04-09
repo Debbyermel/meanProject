@@ -12,7 +12,7 @@ export class BlogService {
 
   constructor( private http: Http ) { }
 
-  // Create a new Post 
+  // Create a new Post
   newBlog(blog) {
     return this.http.post('http://localhost:3000/api/blogs/newPost', blog, this.options).map(res => res.json());
   }

@@ -35,7 +35,7 @@ const appRoutes: Routes = [
   { path: 'users/:id', component: UserDetailComponent }, // User Detail ironhacker Route
   { path: 'dashboard', component: UserComponent }, // User Dashboard
   { path: 'feed', component: FeedComponent }, // Feed Blog
-  { path: 'test', component: TestingComponent }, // Default Route
+  { path: 'contact', component: TestingComponent }, // Contact form Route
   { path: '**', component: HomeComponent } //  Catch-All Route
 ];
 
@@ -59,7 +59,7 @@ const appRoutes: Routes = [
     HttpModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    Angular2FontawesomeModule 
+    Angular2FontawesomeModule
   ],
   providers: [UsersService, BlogService],
   bootstrap: [AppComponent]

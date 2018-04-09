@@ -8,18 +8,18 @@ const Post     = require('../models/Post');
 router.post('/newPost', (req, res) => {
   // Check if blog title was provided
   if (!req.body.title) {
-    res.json({ success: false, message: 'Blog title is required.' }); // Return error message
+    res.json({ success: false, message: 'Post title is required.' }); // Return error message
   } else {
     // Check if blog body was provided
     if (!req.body.body) {
-      res.json({ success: false, message: 'Blog body is required.' }); // Return error message
+      res.json({ success: false, message: 'Post body is required.' }); // Return error message
     } else {
         // Create the blog object for insertion into database
         const post = new Post({
           title: req.body.title, // Title field
           body: req.body.body, // Body field
-          //createdBy: req.body.createdBy // CreatedBy field
-          //author: req.body.author
+          createdBy: req.body.createdBy, // CreatedBy field
+          author: req.body.author,
           author: req.user._id
         });
 
@@ -44,15 +44,12 @@ router.post('/newPost', (req, res) => {
               res.json({ success: false, message: err }); // Return general error message
             }
           } else {
-            res.json({ success: true, message: 'Blog saved!' }); // Return success message
+            res.json({ success: true, message: 'Post saved!' }); // Return success message
           }
         }); 
       }
     }
 
-
-
-  
     //return router;
 });
   

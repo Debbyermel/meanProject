@@ -9,7 +9,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
-
  messageClass;
  message;
  newPost = false;
@@ -18,7 +17,7 @@ export class FeedComponent implements OnInit {
  processing = false;
  user;
  posts = [];
- // username;  name of creator of post 
+ username;  // name of creator of post
 
   constructor(
     private formBuilder: FormBuilder,
@@ -65,7 +64,8 @@ export class FeedComponent implements OnInit {
 
   // Reload blogs on current page
  refreshPosts() {
-    this.loadingPosts = true; // Used to lock button
+    this.loadingPosts = true;
+    //this.getAllBlogs();
      // showing posts
      setTimeout(() => {
          this.loadingPosts = false;
@@ -81,33 +81,32 @@ export class FeedComponent implements OnInit {
   onPostSubmit() {
     console.log('form submited');
    this.processing = true; // Disable submit button
-   this.disableFormNewBlogForm(); // Lock form
+  //  this.disableFormNewBlogForm(); // Lock form
     // Create blog object from form fields
 
  const blog = {
       title: this.form.get('title').value, // Title field
       body: this.form.get('body').value, // Body field
-      // createdBy: this.username  // --> bring the user that is logged in a author
-      //author: this.user._id
     };
 
-     this.blogService.newBlog(blog).subscribe(data => { 
-      console.log("chubaquito",data); 
-      // Check if blog was saved to database or not
+     this.blogService.newBlog(blog).subscribe(data => {
+      // console.log('chubaquito', data);
+      // Check if post was saved to database or not
       if (!data.success) {
-       this.messageClass = 'alert alert-danger'; // Return error class
-         this.message = data.message; // Return error message
+        this.messageClass = 'alert alert-danger'; // Return error class
+        this.message = data.message; // Return error message
         this.processing = false; // Enable submit button
         this.enableFormNewBlogForm(); // Enable form
        } else {
          this.messageClass = 'alert alert-success'; // Return success class
          this.message = data.message; // Return success message
+         //this.getAllBlogs();
         // Clear form data after two seconds
         setTimeout(() => {
           this.newPost = false; // Hide form
           this.processing = false; // Enable submit button
           this.message = false; // Erase error/success message
-         this.form.reset(); // Reset all form fields
+          this.form.reset(); // Reset all form fields
           this.enableFormNewBlogForm(); // Enable the form fields
         }, 2000);
      }
@@ -121,14 +120,14 @@ export class FeedComponent implements OnInit {
 
   ngOnInit() {
      this.user = JSON.parse(localStorage.getItem('user'));
-    if(!this.user || this.user.role !== "IRONHACKER"){
-      this.router.navigate(['']) //redireccionar to a page para tell the user to become un ironhacker
+    if (!this.user || this.user.role !== 'IRONHACKER') {
+      this.router.navigate(['']); // redireccionar to a page para tell the user to become un ironhacker
     }
 
     this.blogService.getAllBlogs()
-    .subscribe(posts=>{
+    .subscribe(posts => {
       this.posts = posts;
-    })
+    });
   }
 } // end of class
 

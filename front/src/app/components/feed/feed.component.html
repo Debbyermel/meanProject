@@ -1,24 +1,19 @@
-
+<div class="jumbotron">
 <h1 class="page-header">Ironhackers Feed</h1>
 
 <!-- Custom Success/Error Message -->
-<div class="row show-hide-message" *ngIf="message && newPost">
+<!-- <div class="row show-hide-message" *ngIf="message && newPost">
   <div [ngClass]="messageClass">
     {{ message }}
   </div>
-</div>
+</div> -->
 
-
-<!-- cambiar esta cochinada de bliss -->
-<p *ngFor="let post of posts">
-  {{post.title}} - {{post.author ? post.author.name:'Anonimo'}}
-</p>
 
 <!-- New Post Button -->
-<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost" (click)="newBlogForm()">New Post</button>
+<button type="button" name="button" class="btn btn-info" *ngIf="!newPost" (click)="newBlogForm()">New Post</button>
 
 <!-- Reload Button -->
-<button [disabled]="loadingPosts" type="button" name="button" class="btn btn-success" *ngIf="!newPost" (click)="refreshPosts()"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;Reload</button>
+<button [disabled]="loadingPosts" type="button" name="button" class="btn btn-info" *ngIf="!newPost" (click)="refreshPosts()"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;Reload</button>
 
 <br />
 <br />
@@ -28,7 +23,7 @@
 <form [formGroup]="form" name="blogForm" (submit)="onPostSubmit()" *ngIf="newPost">
     <!-- Title Input -->
     <div class="form-group">
-      <label for="title">Title</label>
+      <label for="title"></label>
       <div [ngClass]="{'has-success': form.controls.title.valid, 'has-error': form.controls.title.dirty && form.controls.title.errors}">
         <input type="text" name="title" class="form-control" placeholder="Post Title" autocomplete="off" formControlName="title" />
         <ul class="help-block">
@@ -40,7 +35,6 @@
   
     <!-- Body Input -->
     <div class="form-group">
-      <label for="body">Body</label>
       <div [ngClass]="{'has-success': form.controls.body.valid, 'has-error': form.controls.body.dirty && form.controls.body.errors}">
         <textarea name="body" rows="8" cols="80" placeholder="What is happing Ironhacker?" class="form-control" formControlName="body"></textarea>
         <ul class="help-block">
@@ -53,7 +47,7 @@
     <!-- Go Back Button -->
     <button [disabled]="processing" type="button" name="button" (click)="backToBoard()" class="btn btn-warning">Go Back</button>
     <!-- Submit Button -->
-    <button [disabled]="processing || !form.valid" type="submit" name="button" class="btn btn-success">Submit</button>
+    <button [disabled]="processing || !form.valid" type="submit" name="button" class="btn btn-primary">Submit</button>
   
   </form>
   <!-- New Blog Form -->
@@ -64,30 +58,33 @@
 
 
 
-
+<!-- POSTS -->
 <div class="card" *ngIf="!newPost">
-    <div class="card-header card-primary no-margin">
+    <div class="card-header card-primary no-margin" *ngFor="let post of posts">
         <div class="panel-heading">
-          <h3 class="panel-title">Post Title</h3>
+          <h3 class="panel-title">{{post.title}}</h3>
           <div class="panel-body">
-          Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vivamus suscipit tortor eget felis porttitor volutpat. 
-          Proin eget tortor risus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.
-           Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim.Proin eget tortor risus.
+            {{post. body}}
+          
     </div>
     <div class="panel-footer">
-      <p><strong>Post by: Jane Dhoe</strong></p>
-      <!-- <p><strong>Date: 21.03</strong></p> -->
-   
-     
+      <label for="body">{{post.author ? post.author.name:'Anonimo'}}</label>
+      <p><strong></strong></p>
+      <br />
+      <strong>Date: </strong>{{ post.createdAt | date:'MMM dd, yyyy' }}
+      <br />
+
+
+    
         <!-- Edit Button -->
-        <a href="#"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
+        <!-- <a [routerLink]="['/edit-blog/', post._id]" *ngIf="username === post.createdBy"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a> -->
         <!-- Delete Button -->
-        <a href="#"><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a>
+        <!-- <a [routerLink]="['/delete-blog/', post._id]" *ngIf="username === post.createdBy"><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a> -->
      
           <!-- Likes Dropdown  -->
       <div class="dropdown">
           <!-- Like Button -->
-          <button type="button" name="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-thumbs-up">&nbsp;</span>Likes: 21</button>
+          <button type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-star-right" aria-hidden="true">&nbsp;</span>Likes 21</button>
           <!-- Dropdown Menu Items -->
           <div class="dropdown-content">
             <a href="#">gaboRaces</a>
@@ -104,7 +101,7 @@
    
     <ul class="list-group">
         <li class="list-group-item">
-          <button type="button" name="button" class="btn btn-sm btn-danger" (click)="postComment()">Post Comment</button>
+          <button type="button" name="button" class="btn btn-sm btn-primary" (click)="postComment()">Post Comment</button>
           <br />
           <!-- <form>
             <textarea name="comment" rows="5" cols="30" class="form-control"></textarea>
@@ -119,3 +116,4 @@
     <!-- Panel Outer Layer -->
   </div>
   <!-- Panel End -->
+</div>
