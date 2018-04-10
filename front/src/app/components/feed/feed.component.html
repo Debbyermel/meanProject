@@ -1,31 +1,35 @@
 <div class="jumbotron">
 <h1 class="page-header">Ironhackers Feed</h1>
 
-<!-- Custom Success/Error Message -->
-<!-- <div class="row show-hide-message" *ngIf="message && newPost">
-  <div [ngClass]="messageClass">
-    {{ message }}
+<!-- Success/Error Alert -->
+<div class="row show-hide-message" *ngIf="msg && newPost">
+  <div [ngClass]="msgClass">
+    {{ msg }}
   </div>
-</div> -->
+</div>
 
+<!-- New Post Btn -->
+<button type="button" name="button" class="btn btn-info" *ngIf="!newPost" (click)="newPostForm()">
+<i class="fas fa-pencil-alt">
+</i>&nbsp;&nbsp;New Post
+</button>
 
-<!-- New Post Button -->
-<button type="button" name="button" class="btn btn-info" *ngIf="!newPost" (click)="newBlogForm()">New Post</button>
-
-<!-- Reload Button -->
-<button [disabled]="loadingPosts" type="button" name="button" class="btn btn-info" *ngIf="!newPost" (click)="refreshPosts()"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;Reload</button>
-
+<!-- Reload Btn -->
+<button [disabled]="loadingPosts" type="button" name="button" class="btn btn-info" *ngIf="!newPost" (click)="refreshPosts()">
+  <i class="fas fa-sync-alt"></i>&nbsp;&nbsp;Reload
+</button>
 <br />
 <br />
-<br />
 
-<!-- New Blog Form -->
+
+<!-- Start New Post Form -->
 <form [formGroup]="form" name="blogForm" (submit)="onPostSubmit()" *ngIf="newPost">
+
     <!-- Title Input -->
     <div class="form-group">
       <label for="title"></label>
       <div [ngClass]="{'has-success': form.controls.title.valid, 'has-error': form.controls.title.dirty && form.controls.title.errors}">
-        <input type="text" name="title" class="form-control" placeholder="Post Title" autocomplete="off" formControlName="title" />
+        <input type="text" name="title" class="form-control" placeholder="Title" autocomplete="off" formControlName="title" />
         <ul class="help-block">
           <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.required">This field is required.</li>
           <li *ngIf="(form.controls.title.dirty && form.controls.title.errors?.minlength) || (form.controls.title.dirty && form.controls.title.errors?.maxlength)">Max length: 50, Min length: 5</li>
@@ -48,34 +52,26 @@
     <button [disabled]="processing" type="button" name="button" (click)="backToBoard()" class="btn btn-warning">Go Back</button>
     <!-- Submit Button -->
     <button [disabled]="processing || !form.valid" type="submit" name="button" class="btn btn-primary">Submit</button>
-  
+
   </form>
-  <!-- New Blog Form -->
+  <!-- End of Post Form -->
 
 
 
-
-
-
-
-<!-- POSTS -->
+<!-- POSTS LIST -->
 <div class="card" *ngIf="!newPost">
     <div class="card-header card-primary no-margin" *ngFor="let post of posts">
         <div class="panel-heading">
           <h3 class="panel-title">{{post.title}}</h3>
           <div class="panel-body">
             {{post. body}}
-          
-    </div>
-    <div class="panel-footer">
-      <label for="body">{{post.author ? post.author.name:'Anonimo'}}</label>
+          </div>
+      <div class="panel-footer">
+      <label for="body">{{post.author ? post.author.username:'Anonimo'}}</label>
       <p><strong></strong></p>
-      <br />
-      <strong>Date: </strong>{{ post.createdAt | date:'MMM dd, yyyy' }}
-      <br />
-
-
+      <p><small>{{ post.createdAt | date:'MMM dd, yyyy' }}</small></p> 
     
+
         <!-- Edit Button -->
         <!-- <a [routerLink]="['/edit-blog/', post._id]" *ngIf="username === post.createdBy"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a> -->
         <!-- Delete Button -->
@@ -84,32 +80,35 @@
           <!-- Likes Dropdown  -->
       <div class="dropdown">
           <!-- Like Button -->
-          <button type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-star-right" aria-hidden="true">&nbsp;</span>Likes 21</button>
+          <button type="button" class="btn btn-sm btn-success">  
+            <i class="fas fa-thumbs-up"></i>&nbsp;&nbsp;21
+          </button>
           <!-- Dropdown Menu Items -->
           <div class="dropdown-content">
             <a href="#">gaboRaces</a>
-            <a href="#">Fri</a>
-            <a href="#">Andrea</a>
           </div>
         </div>
-        <br/>
-        <br/>
-    
-     <!-- Panel Footer End -->
 
-    <!-- Post Comment Box: Start -->
-   
-    <ul class="list-group">
-        <li class="list-group-item">
-          <button type="button" name="button" class="btn btn-sm btn-primary" (click)="postComment()">Post Comment</button>
+        <div class="comment">
+        <button type="button" name="button" class="btn btn-sm btn-primary" (click)="postComment()">
+        <i class="fas fa-comment-dots"></i> 
+        </button>
+        </div>
+        <!-- End of Panel Footer -->
+        <br/>
+        <br/>
+ 
+
+    <!-- Start Comment Post Field-->
+  
+          
           <br />
-          <!-- <form>
+           <!-- <form>
             <textarea name="comment" rows="5" cols="30" class="form-control"></textarea>
             <button type="button" name="button" class="btn btn-sm btn-info">Submit Post</button>
             <button type="button" name="button" class="btn btn-sm btn-danger">Cancel</button>
           </form> -->
-        </li>
-      </ul>
+      
       <!-- Post Comment Box: End -->
   
     </div>

@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router();
+const express  = require('express');
+const router   = express.Router();
 const mongoose = require("mongoose");
-const User = require("../models/User");
+const User     = require("../models/User");
 const passport = require("passport");
-const multer = require("multer");
-const uploads = multer({dest: 'public/uploads'});
+const multer   = require("multer");
+const uploads  = multer({dest: 'public/uploads'});
 
-/* GET users list */
+/* GET Users list */
 router.get('/', function(req, res, next) {
   User.find()
   .then(users=>res.send(users))
@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-/* GET Single list */
+/* GET Single User */
 router.get('/:id', function(req, res, next) {
   User.findById(req.params.id)
       .then(singleUser => res.json(singleUser))
@@ -28,8 +28,7 @@ router.patch('/update/:id', uploads.single('profilePic'), (req,res)=>{
     const profilePic = 'http://localhost:3000/uploads/'+req.file.filename;
     req.body['avatar'] = profilePic;
   }
-  //console.log(req.body, req.user); 
-  //remember the login id useless and fuzzy
+  //remember to check why this id is being usuless!!!
   User.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(user=>res.send(user))
   .catch(e=>res.send(e));

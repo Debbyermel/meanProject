@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
 
 //   user=local
 //   user.role === "IRONHACKER"
-//    navigate
+//   navigate
 
 chooseFile(input) {
   input.click();

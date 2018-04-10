@@ -16,7 +16,7 @@ const PostSchema = new Schema(
     likedBy: { type: Array },
     comments: [{
         comment: { type: String },
-        commentator: { type: String }
+        commentBy: { type: String }
       }] 
     });
 

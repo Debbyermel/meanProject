@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald);
 
+#topNav {
+ overflow: hidden;
+}
+
 ul {
   background-color: #4A4A4A;
   border-bottom: solid #2d354c;
@@ -8,8 +12,15 @@ ul {
   word-spacing: 70px;
   text-align: center;
 }
-.logo{
-  margin-top: -20px;
+li {
+  display: inline-block;
+  margin-top: 15px;
+  text-decoration: none;
+  transition: ease-out 0.5s;
+}
+
+.logo {
+ margin-top: -20px;
 }
 
 a {
@@ -21,13 +32,6 @@ a {
   transition: ease-out 0.2s;
 }
   
-li {
-  display: inline-block;
-  margin-top: 15px;
-  text-decoration: none;
-  transition: ease-out 0.5s;
-}
- 
 a:hover {
   background-color: #2d354c;
   color: #e6faf7;

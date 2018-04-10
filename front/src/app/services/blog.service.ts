@@ -14,12 +14,14 @@ export class BlogService {
 
   // Create a new Post
   newBlog(blog) {
-    return this.http.post('http://localhost:3000/api/blogs/newPost', blog, this.options).map(res => res.json());
+    return this.http.post('http://localhost:3000/api/blogs/newPost', blog, this.options)
+    .map(res => res.json());
   }
 
   // Function to get all posts from the database
   getAllBlogs() {
-    return this.http.get('http://localhost:3000/api/blogs/', this.options).map(res => res.json());
+    return this.http.get('http://localhost:3000/api/blogs/', this.options)
+    .map(res => res.json());
   }
 
 } // End class.

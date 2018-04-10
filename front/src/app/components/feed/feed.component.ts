@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {BlogService} from '../../services/blog.service';
+import {UsersService} from '../../services/users.service';
+import { ActivatedRoute } from '@angular/router';
 import {Router} from '@angular/router';
 
 @Component({
@@ -9,27 +11,28 @@ import {Router} from '@angular/router';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
- messageClass;
- message;
+ msgClass;
+ msg;
  newPost = false;
  loadingPosts = false;
  form;
  processing = false;
  user;
  posts = [];
- username;  // name of creator of post
 
   constructor(
     private formBuilder: FormBuilder,
     private blogService: BlogService,
+    private usersService: UsersService,
+    private activateRouter: ActivatedRoute,
     private router: Router
   ) {
-    this.createNewBlogForm();
-  // Create new blog form on start up
+    this.createNewPostForm();
+  // Create new post form on start up
   }
 
-// Function to create new blog form with validation
-  createNewBlogForm() {
+// Function to create new post form with validation
+  createNewPostForm() {
     this.form = this.formBuilder.group({
       title: ['', Validators.compose([
         Validators.required,
@@ -38,80 +41,80 @@ export class FeedComponent implements OnInit {
       ])],
       body: ['', Validators.compose([
         Validators.required,
-        Validators.maxLength(500),
+        Validators.maxLength(400),
         Validators.minLength(5)
       ])]
     });
   }
 
   // Enable new blog form
-  enableFormNewBlogForm() {
+  enableFormNewPostForm() {
     this.form.get('title').enable(); // Enable title field
     this.form.get('body').enable(); // Enable body field
   }
 
   // Disable new blog form
-  disableFormNewBlogForm() {
+  disableFormNewPostForm() {
     this.form.get('title').disable(); // Disable title field
     this.form.get('body').disable(); // Disable body field
   }
 
 
   // Function to display new blog form
-   newBlogForm() {
+   newPostForm() {
     this.newPost = true; // Show new blog form
   }
 
   // Reload blogs on current page
- refreshPosts() {
+  refreshPosts() {
     this.loadingPosts = true;
-    //this.getAllBlogs();
      // showing posts
      setTimeout(() => {
          this.loadingPosts = false;
        }, 4000); // After click Refresh posts and it will have 4s till refresh again.
     }
 
-  // Function to post a new comment on blog post
-  // postComment() {
+  // Function to post a new comment
+   postComment() {
 
-  // }
+   }
 
-  // Function to submit a new blog post
+  // Function to submit a new post
   onPostSubmit() {
     console.log('form submited');
    this.processing = true; // Disable submit button
-  //  this.disableFormNewBlogForm(); // Lock form
-    // Create blog object from form fields
+   this.disableFormNewPostForm(); // Lock form
 
- const blog = {
+  const post = {
       title: this.form.get('title').value, // Title field
       body: this.form.get('body').value, // Body field
+      user: this.user.username           // Creator field
     };
 
-     this.blogService.newBlog(blog).subscribe(data => {
-      // console.log('chubaquito', data);
+     this.blogService.newBlog(post).subscribe(data => {
       // Check if post was saved to database or not
-      if (!data.success) {
-        this.messageClass = 'alert alert-danger'; // Return error class
-        this.message = data.message; // Return error message
-        this.processing = false; // Enable submit button
-        this.enableFormNewBlogForm(); // Enable form
-       } else {
-         this.messageClass = 'alert alert-success'; // Return success class
-         this.message = data.message; // Return success message
-         //this.getAllBlogs();
-        // Clear form data after two seconds
-        setTimeout(() => {
-          this.newPost = false; // Hide form
-          this.processing = false; // Enable submit button
-          this.message = false; // Erase error/success message
-          this.form.reset(); // Reset all form fields
-          this.enableFormNewBlogForm(); // Enable the form fields
-        }, 2000);
-     }
-   });
-  }
+      if (data.success) {
+        this.msgClass = 'alert alert-success'; // Return success class
+        this.msg = data.message; // Return success message
+        // this.getAllBlogs();
+       // Clear form data after two seconds
+       setTimeout(() => {
+         this.newPost = false; // Hide form
+         this.processing = false; // Enable submit button
+         this.msg = false; // Erase error/success message
+         this.form.reset(); // Reset all form fields
+         this.enableFormNewPostForm(); // Enable the form fields
+       }, 2000);
+      } else {
+     this.msgClass = 'alert alert-danger'; // Return error class
+     this.msg = data.message; // Return error message
+     this.processing = false; // Enable submit button
+     this.enableFormNewPostForm(); // Enable form
+   }
+   window.location.reload();
+
+  });
+}
 
   // Function to go back to previous page
   backToBoard() {
@@ -120,14 +123,19 @@ export class FeedComponent implements OnInit {
 
   ngOnInit() {
      this.user = JSON.parse(localStorage.getItem('user'));
-    if (!this.user || this.user.role !== 'IRONHACKER') {
-      this.router.navigate(['']); // redireccionar to a page para tell the user to become un ironhacker
+     if (!this.user || this.user.role !== 'IRONHACKER') {
+      this.router.navigate(['']); // redirect to a new page and tell the user to become an ironhacker
     }
+    this.activateRouter.params.subscribe(params => {
+      this.usersService.getUser(params['id'])
+      .subscribe(singleUser => this.user = singleUser.username);
+    });
 
-    this.blogService.getAllBlogs()
+ this.blogService.getAllBlogs()
     .subscribe(posts => {
       this.posts = posts;
     });
+
   }
 } // end of class
 

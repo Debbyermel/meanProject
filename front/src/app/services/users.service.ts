@@ -10,11 +10,11 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class UsersService {
-  
   user;
+
   constructor(
    private http: Http,
-    private route: Router ) { }
+   private route: Router ) { }
 
 
   // Get All Users
@@ -99,12 +99,6 @@ export class UsersService {
       return Observable.throw(e);
     });
   }
+
 }// end of class
 
-
-
-  // singleFile(formData) {
-  //   return this.http.post('http://localhost:3000/single', formData)
-  //   .map(res => res.json())
-  //   .catch(e => Observable.throw(e));}
-  //
