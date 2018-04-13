@@ -5,12 +5,12 @@ const PassportLocalMongoose = require('passport-local-mongoose');
 const userSchema = new Schema(
     {
         username: String,
-        name:String,
+        name: String,
         email: String,
         role:{
             type:String,
             enum:["GUEST", "ADMIN", "IRONHACKER"],
-            default:"IRONHACKER"
+            default:"IRONHACKER" // change it to guest and fix auth
         },
         firstName:String,
         lastName: String,
@@ -25,6 +25,8 @@ const userSchema = new Schema(
         bootcamp:String,
         bio:[],
         hire: Boolean,
+        githubLink: String, 
+        linkedinLink: String,
         secretWord: {type: String, default: "MEAN"}
         },
     {
@@ -36,5 +38,4 @@ const userSchema = new Schema(
     );
 
 userSchema.plugin(PassportLocalMongoose, {usernameField:"email"});
-
 module.exports = mongoose.model("User", userSchema);

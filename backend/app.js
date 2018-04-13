@@ -13,10 +13,11 @@ require("./helpers/passportConfig");
 
 var app = express();
 
+//Request of Resource Outside Origin
 const cors = require("cors");
 const options = {
-  credentials:true,
-  origin:true
+credentials:true,
+ origin:true
 }
 app.use(cors(options));
 
@@ -35,12 +36,12 @@ app.use(session({
   cookie : { httpOnly: true, maxAge: 2419200000 }
 }));
 
+//Passport 
 app.use(passport.initialize());
 app.use(passport.session());
 
 
-
-// uncomment after placing your favicon in /public
+//favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());

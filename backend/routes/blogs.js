@@ -14,7 +14,7 @@ router.post('/newPost', (req, res) => {
     if (!req.body.body) {
       res.json({ success: false, message: 'Post body is required.' }); // Return error message
     } else {
-       // Create the post for insertion into db
+       // Create the post and insert to db
          const post = new Post({
           title: req.body.title, // Title field
           body: req.body.body, // Body field

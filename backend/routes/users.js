@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-/* GET Single User */
+/* GET Single User by Id */
 router.get('/:id', function(req, res, next) {
   User.findById(req.params.id)
       .then(singleUser => res.json(singleUser))
@@ -28,7 +28,7 @@ router.patch('/update/:id', uploads.single('profilePic'), (req,res)=>{
     const profilePic = 'http://localhost:3000/uploads/'+req.file.filename;
     req.body['avatar'] = profilePic;
   }
-  //remember to check why this id is being usuless!!!
+  //remember to check why this id is being usuless to validation!!!
   User.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(user=>res.send(user))
   .catch(e=>res.send(e));

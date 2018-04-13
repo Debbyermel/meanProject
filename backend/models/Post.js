@@ -4,8 +4,9 @@ const Schema   = mongoose.Schema;
 const PostSchema = new Schema(
     {
     author:{
-      type:Schema.Types.ObjectId,
-      ref:'User'
+      type:mongoose.Schema.Types.ObjectId,
+      ref:'User',
+      required: true
     },
     title: { type: String, required: true},
     body: { type: String, required: true},
@@ -19,8 +20,5 @@ const PostSchema = new Schema(
         commentBy: { type: String }
       }] 
     });
-
-
-
 
 module.exports = mongoose.model('Post', PostSchema);
